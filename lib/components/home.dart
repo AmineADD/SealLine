@@ -5,8 +5,16 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Container(
-        child: Text('Home Page'),
+      appBar: AppBar(
+        title: const Text('Home App Bar'),
+        centerTitle: true,
+        
+      ),
+      body:  const Text('Home Page'),
+      backgroundColor: Colors.blueGrey,
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.red,
+        child: Text("App Bar down"),
       ),
     );
   }
