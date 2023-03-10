@@ -29,7 +29,7 @@ flutter_native_splash:
 flutter_icons:
   android: "ic_launcher"
   ios: false
-  image_path: assets/logo/logo.png
+  image_path: assets/icons/ic_launcher.png
   min_sdk_android: 21
 
 
