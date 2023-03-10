@@ -4,8 +4,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold( 
-      body:  const Text('Home Page',style: TextStyle(color: Colors.white),),
+    return const Scaffold( 
+      body: Center(child:  Text('Home Page',style: TextStyle(color: Colors.black))),
     );
   }
 }
