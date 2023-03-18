@@ -7,26 +7,28 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Align(alignment: Alignment.topLeft,
+      child: SafeArea (child: Scaffold(
+        body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/Bitmap.png"),
             fit: BoxFit.fill,
           ),
         ),
-        child: Column(
+         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RichText(
               text: TextSpan(
-                style: Theme.of(context).textTheme.displayLarge,
-                children: [
+                style: Theme.of(context).textTheme.displaySmall,
+                children: const [
                   TextSpan(
-                    text: "flamin",
+                    text: "Seal",
                   ),
                   TextSpan(
-                    text: "go.",
+                    text: "Line",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -35,7 +37,7 @@ class Home extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * .6,
               child: RoundedButton(
-                text: "start reading",
+                text: "Start",
                 fontSize: 20,
                 press: () {
                   Navigator.push(
@@ -51,7 +53,8 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    ) ;
+      )
+      )),
+      )); 
   }
 }

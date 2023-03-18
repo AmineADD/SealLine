@@ -10,7 +10,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
+    return SafeArea(child: 
+    Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: RichText(
                       text: TextSpan(
-                        style: Theme.of(context).textTheme.displayLarge,
+                        style: Theme.of(context).textTheme.displaySmall,
                         children: [
                           TextSpan(text: "What are you \nreading "),
                           TextSpan(
@@ -82,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                       children: <Widget>[
                         RichText(
                           text: TextSpan(
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context).textTheme.displaySmall,
                             children: [
                               TextSpan(text: "Best of the "),
                               TextSpan(
@@ -95,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                         bestOfTheDayCard(size, context),
                         RichText(
                           text: TextSpan(
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context).textTheme.displaySmall,
                             children: [
                               TextSpan(text: "Continue "),
                               TextSpan(
@@ -195,7 +196,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    )
+  );
   }
 
   Container bestOfTheDayCard(Size size, BuildContext context) {
