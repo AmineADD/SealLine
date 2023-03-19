@@ -1,11 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:seal_line/Components/DesignSystem/Titles/headerWithString.dart'; 
+import 'package:seal_line/Components/DesignSystem/Titles/headerWithString.dart';
+import 'package:seal_line/Components/Steppers/home_screen.dart';
+import 'package:seal_line/Constants/config.dart';
 
 class OnBoardingSplash extends StatelessWidget {
   const OnBoardingSplash({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Timer(
+        const Duration(seconds: DURATIONS_ANIMATION),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => HomeScreen())));
+
     return Scaffold(
       body: _buildBody(context),
     );
