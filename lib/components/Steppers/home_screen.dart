@@ -18,13 +18,6 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/main_page_bg.png"),
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -34,8 +27,8 @@ class HomeScreen extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         style: Theme.of(context).textTheme.displaySmall,
-                        children: [
-                          TextSpan(text: "What are you \nreading "),
+                        children: const[
+                           TextSpan(text: "What are you \nreading "),
                           TextSpan(
                               text: "today?",
                               style: TextStyle(
@@ -45,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
