@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                           },
                         ),
                         ReadingListCard(
-                          image: "assets/images/book-2.png",
+                          image: "assets/images/book-1.png",
                           title: "Top Ten Business Hacks",
                           auth: "Herman Joel",
                           rating: 4.8,
@@ -267,7 +267,7 @@ class HomeScreen extends StatelessWidget {
             right: 0,
             top: 0,
             child: Image.asset(
-              "assets/images/book-3.png",
+              "assets/images/book-1.png",
               width: size.width * .37,
             ),
           ),

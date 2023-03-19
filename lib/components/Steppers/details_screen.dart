@@ -146,7 +146,7 @@ class DetailsScreen extends StatelessWidget {
                         top: 0,
                         right: 0,
                         child: Image.asset(
-                          "assets/images/book-3.png",
+                          "assets/images/book-1.png",
                           width: 150,
                           fit: BoxFit.fitWidth,
                         ),
