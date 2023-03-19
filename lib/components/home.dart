@@ -1,50 +1,38 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:seal_line/Components/OnBoarding/onboarding_splash.dart';
 import 'package:seal_line/Components/Steppers/home_screen.dart';
+import 'package:seal_line/Constants/config.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    Timer(
-        const Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => HomeScreen())));
+  _HomeState createState() => _HomeState();
+}
 
-    return Scaffold(
-        body: Align(
-      alignment: Alignment.topLeft,
-      child: Scaffold(
-          body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/start.jpg"),
-            fit: BoxFit.fill,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.displaySmall,
-                children: const [
-                  TextSpan(
-                    text: "Seal",
-                  ),
-                  TextSpan(
-                    text: "Line",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      )),
-    ));
+class _HomeState extends State<Home> {
+  bool _hasAlreadySeenOnBoarding = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfAlreadySeenOnBoarding();
+  }
+
+  Future<void> _checkIfAlreadySeenOnBoarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _hasAlreadySeenOnBoarding =
+          prefs.getBool(ONBOARDING_LOCAL_SAVE) ?? false;
+      if (!_hasAlreadySeenOnBoarding) {
+        prefs.setBool(ONBOARDING_LOCAL_SAVE, true);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) { 
+    return _hasAlreadySeenOnBoarding ? HomeScreen() : const OnBoardingSplash();
   }
 }
