@@ -14,7 +14,7 @@ class HeaderWithString extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: const TextStyle(fontSize: 24, color: Colors.black),
+        style: const TextStyle(fontSize: 55, color: Colors.black),
         children: [
           TextSpan(
             text: title,

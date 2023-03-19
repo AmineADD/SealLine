@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:seal_line/Components/OnBoarding/OnBoarding.dart';
 import 'package:seal_line/Components/OnBoarding/onboarding_splash.dart';
 import 'package:seal_line/Components/Steppers/home_screen.dart';
-import 'package:seal_line/Constants/config.dart'; 
+import 'package:seal_line/Constants/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -23,8 +24,7 @@ class _HomeState extends State<Home> {
   Future<void> _checkIfAlreadySeenOnBoarding() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _hasAlreadySeenOnBoarding =
-          prefs.getBool(ONBOARDING_LOCAL_SAVE) ?? false;
+      _hasAlreadySeenOnBoarding = prefs.getBool(ONBOARDING_LOCAL_SAVE) ?? false;
       if (!_hasAlreadySeenOnBoarding) {
         prefs.setBool(ONBOARDING_LOCAL_SAVE, true);
       }
@@ -32,7 +32,9 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  Widget build(BuildContext context) { 
-    return _hasAlreadySeenOnBoarding ? HomeScreen() : const OnBoardingSplash();
+  Widget build(BuildContext context) {
+    return _hasAlreadySeenOnBoarding
+        ? HomeScreen()
+        : const OnBoarding();
   }
 }
