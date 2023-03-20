@@ -6,56 +6,38 @@ import 'package:seal_line/Components/Steppers/home_screen.dart';
 import 'package:seal_line/Constants/config.dart';
 import 'package:seal_line/Utils/translate.dart';
 
-class OnBoardingSplash extends StatefulWidget {
+class OnBoardingSplash extends StatelessWidget {
   const OnBoardingSplash({Key? key}) : super(key: key);
 
-  @override
-  _OnBoardingSplashState createState() => _OnBoardingSplashState();
-}
-
-class _OnBoardingSplashState extends State<OnBoardingSplash> {
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer(
-        const Duration(seconds: DURATIONS_ANIMATION),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => HomeScreen())));
-    _showWelcomeMessage();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _showWelcomeMessage() {
-    Future<Null>.delayed(Duration.zero, () {
-      if (trad(context) != null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: FlashMessage(
-              title: trad(context)!.information,
-              message: trad(context)!.offering),
-        ));
+  void showWelcomeMessage(BuildContext context) {
+    Future.delayed(Duration.zero, () {
+      final translation = trad(context);
+      if (translation != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: FlashMessage(
+              title: translation.information,
+              message: translation.offering,
+            ),
+          ),
+        );
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildBody(context),
+    Timer(
+      const Duration(seconds: DURATIONS_ANIMATION),
+      () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+      ),
     );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Scaffold(
-        body: Container(
+    showWelcomeMessage(context);
+    return Scaffold(
+      body: Align(
+        alignment: Alignment.topLeft,
+        child: Container(
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -68,12 +50,13 @@ class _OnBoardingSplashState extends State<OnBoardingSplash> {
             children: [
               RichText(
                 text: TextSpan(
-                  style: Theme.of(context).textTheme.displayLarge,
+                  style: Theme.of(context).textTheme.displayLarge!,
                   children: <InlineSpan>[
                     WidgetSpan(
                       child: HeaderWithString(
-                          title: trad(context)!.seal,
-                          subTitle: trad(context)!.line),
+                        title: trad(context)!.seal,
+                        subTitle: trad(context)!.line,
+                      ),
                     ),
                   ],
                 ),
