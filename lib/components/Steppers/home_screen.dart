@@ -1,3 +1,4 @@
+import 'package:seal_line/Components/DesignSystem/NavBar/nav_gbar.dart';
 import 'package:seal_line/Constants/colorsConfig.dart';
 import 'package:seal_line/Components/Steppers/details_screen.dart';
 import 'package:seal_line/Components/DesignSystem/book_rating.dart';
@@ -12,6 +13,7 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return SafeArea(child: 
     Scaffold(
+      bottomNavigationBar: NavBarG(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
